@@ -1,0 +1,287 @@
+{% comment %}
+  Questo è il CSS per dare uno stile base al nostro carosello.
+  È "scoped" (limitato) a questa sezione grazie all'ID univoco.
+{% endcomment %}
+<style>
+    :root {
+        /* COLORS */
+        --primary: #0F71AC;
+
+        /* FONTS */
+        --main-font: "Lexend Deca", sans-serif;
+
+        --font-weight-regular: 300;
+        --font-weight-bold: 500;
+        --font-weight-extra-bold: 600;
+
+        --font-size-title: 10vw;
+        --font-size-title-medium: 8vw;
+        --font-size-title-small: 5vw;
+        --font-size-subtitle: 4.2vw;
+        --font-size-description: 4.2vw;
+    }
+
+    @media (min-width: 700px) {
+      :root {
+          --font-size-title: 2.5vw;
+          --font-size-title-small: 1.25vw;
+          --font-size-title-medium: 2vw;
+          --font-size-subtitle: 0.8vw;
+          --font-size-description: 1vw;
+      }
+  }
+
+    @media (min-width: 700px) {
+        .btn-primary {
+            font-size: 1vw !important;
+            border-radius: 8px !important;
+            padding: 1% !important;
+            padding-left: 2% !important;
+            padding-right: 2% !important;
+        }
+    }
+
+    .btn-primary {
+        border: none;
+        background-color: var(--primary);
+        color: white;
+        font-family: var(--main-font);
+        font-weight: var(--font-weight-regular) !important;
+        font-size: 1rem;
+        border-radius: 5px;
+        padding: 3%;
+        padding-left: 5%;
+        padding-right: 5%;
+        transition: all 0.3s ease-in-out;
+    }
+
+    @media (min-width: 700px) {
+      .title{
+          font-family: var(--main-font) !important;
+          font-weight: var(--font-weight-extra-bold);
+          font-size: var(--font-size-title);
+          color: white;
+          width: 50%;
+      }
+    }
+
+  .title {
+      font-family: var(--main-font) !important;
+      font-weight: var(--font-weight-extra-bold);
+      font-size: var(--font-size-title-small);
+      color: white;
+      width: 80%;
+    }
+
+      .custom-carousel-{{ section.id }} {
+        position: relative;
+      }
+
+      .custom-carousel-{{ section.id }} .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      }
+
+      .custom-carousel-{{ section.id }} .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Diamo un aspect ratio per mantenere le proporzioni */
+        aspect-ratio: 16 / 7;
+      }
+
+      /* Overlay grigio opaco sopra le immagini */
+      .custom-carousel-{{ section.id }} .carousel-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(40, 40, 40, 0.85);
+      z-index: 2;
+      pointer-events: none;
+      }
+
+      /* Overlay contenuto testo */
+      .custom-carousel-{{ section.id }} .carousel-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      z-index: 3;
+        color: #fff;
+        text-align: center;
+        pointer-events: none;
+        padding: 2rem;
+      }
+
+      .custom-carousel-{{ section.id }} .carousel-content p {
+        font-size: var(--font-size-description);
+        margin-bottom: 1.5rem;
+      }
+      .custom-carousel-{{ section.id }} .carousel-content .carousel-btn {
+        padding: 2rem 5rem;
+        cursor: pointer;
+        pointer-events: auto;
+        text-decoration: none;
+      }
+
+      /* Stile per i pulsanti di navigazione */
+      .custom-carousel-{{ section.id }} .swiper-button-next,
+      .custom-carousel-{{ section.id }} .swiper-button-prev {
+        color: #ffffff;
+        background-color: rgba(0, 0, 0, 0.3);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .custom-carousel-{{ section.id }} .swiper-button-next::after,
+      .custom-carousel-{{ section.id }} .swiper-button-prev::after {
+        font-size: 24px;
+      }
+</style>
+
+{% comment %}
+  Questa è la struttura HTML del carosello, compatibile con SwiperJS.
+  Usiamo un ciclo Liquid per creare una "slide" per ogni blocco che aggiungerai dall'editor.
+{% endcomment %}
+<div class="custom-carousel-{{ section.id }}">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {% comment %} Se non ci sono slide, mostriamo dei segnaposto {% endcomment %}
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div class="swiper-slide" style="position:relative;">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 1800 }}"
+                loading="lazy"
+                alt="{{ block.settings.image.alt | escape }}"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+                style="position:relative; z-index:1;"
+              >
+              <div class="carousel-overlay"></div>
+              <div class="carousel-content">
+                {% if block.settings.title != blank %}
+                  <h2 class="title">{{ block.settings.title }}</h2>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <p>{{ block.settings.text }}</p>
+                {% endif %}
+                {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                  <a href="{{ block.settings.button_link }}" class="carousel-btn btn-primary">
+                    {{- block.settings.button_label -}}
+                  </a>
+                {% endif %}
+              </div>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for i in (1..3) %}
+          <div class="swiper-slide">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+
+{% comment %}
+  Questo è lo script JavaScript per "attivare" Swiper.
+  Lo leghiamo all'ID univoco della sezione per evitare conflitti.
+{% endcomment %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.custom-carousel-{{ section.id }} .swiper', {
+      loop: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
+</script>
+
+{% comment %}
+  Questa è la parte più importante per Shopify!
+  Lo "schema" definisce come questa sezione apparirà nell'editor "Personalizza".
+  Permette all'utente di aggiungere e gestire le slide.
+{% endcomment %}
+{% schema %}
+{
+  "name": "Carosello Personalizzato",
+  "tag": "section",
+  "class": "custom-carousel-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Immagine"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titolo"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Paragrafo"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Testo Bottone"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Link Bottone"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carosello Personalizzato",
+      "blocks": [{ "type": "slide" }, { "type": "slide" }, { "type": "slide" }]
+    }
+  ]
+}
+{% endschema %}
