@@ -1,0 +1,140 @@
+<div class="mass-order-page">
+  <h1>{{ page.title }}</h1>
+  <div class="page-content">{{ page.content }}</div>
+
+  <div id="mass-order-form">
+    <table class="mass-order-table">
+      <thead>
+        <tr>
+          <th>Prodotto</th>
+          <th>SKU</th>
+          <th>Prezzo</th>
+          <th>Quantità</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% comment %}
+          Sostituisci 'catalogo-ingrosso' con l'handle della tua collezione.
+        {% endcomment %}
+        {% for product in collections['bulk-ordering'].products %}
+          {% for variant in product.variants %}
+            <tr>
+              <td>
+                <img src="{{ variant.image | image_url: width: 75 }}" width="75" height="75" loading="lazy">
+                <div>
+                  <strong>{{ product.title }}</strong>
+                  {% unless variant.title == 'Default Title' %}
+                    <small>{{ variant.title }}</small>
+                  {% endunless %}
+                </div>
+              </td>
+              <td>{{ variant.sku }}</td>
+              <td>{{ variant.price | money }}</td>
+              <td>
+                <input
+                  type="number"
+                  min="0"
+                  class="quantity-input"
+                  data-variant-id="{{ variant.id }}"
+                >
+              </td>
+            </tr>
+          {% endfor %}
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <button type="button" id="add-all-to-cart" class="button">Aggiungi Selezionati al Carrello</button>
+    <div id="order-feedback" style="display:none; margin-top: 1rem;"></div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('add-all-to-cart').addEventListener('click', function () {
+    const feedbackEl = document.getElementById('order-feedback');
+    this.disabled = true;
+    this.textContent = 'Aggiungo...';
+
+    const itemsToAdd = [];
+    const quantityInputs = document.querySelectorAll('.quantity-input');
+
+    quantityInputs.forEach((input) => {
+      const quantity = parseInt(input.value, 10);
+      if (quantity > 0) {
+        itemsToAdd.push({
+          id: input.dataset.variantId,
+          quantity: quantity,
+        });
+      }
+    });
+
+    if (itemsToAdd.length === 0) {
+      feedbackEl.textContent = 'Per favore, inserisci una quantità per almeno un prodotto.';
+      feedbackEl.style.display = 'block';
+      this.disabled = false;
+      this.textContent = 'Aggiungi Selezionati al Carrello';
+      return;
+    }
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ items: itemsToAdd }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          window.location.href = '/cart'; // Reindirizza al carrello
+        } else {
+          return response.json(); // Se c'è un errore, leggilo
+        }
+      })
+      .catch((error) => {
+        feedbackEl.textContent = 'Si è verificato un errore. Riprova.';
+        feedbackEl.style.display = 'block';
+        console.error('Error:', error);
+      })
+      .finally(() => {
+        // Riabilita il pulsante solo in caso di errore non di reindirizzamento
+        if (window.location.pathname !== '/cart') {
+          this.disabled = false;
+          this.textContent = 'Aggiungi Selezionati al Carrello';
+        }
+      });
+  });
+</script>
+
+<style>
+  .mass-order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+  }
+  .mass-order-table th,
+  .mass-order-table td {
+    border: 1px solid #e0e0e0;
+    padding: 0.75rem;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .mass-order-table th {
+    background-color: #f5f5f5;
+  }
+  .mass-order-table td:first-child {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .mass-order-table img {
+    border-radius: 4px;
+  }
+  .mass-order-table .quantity-input {
+    width: 70px;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  .mass-order-page .button {
+    /* Aggiungi lo stile del tuo bottone qui */
+  }
+</style>

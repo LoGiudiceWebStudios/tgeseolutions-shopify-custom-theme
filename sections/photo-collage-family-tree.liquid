@@ -1,0 +1,130 @@
+{% comment %}
+  Displays a photo collage in a family tree style. Each node is a block with an uploaded image, name, and optional description.
+{% endcomment %}
+<style>
+  .family-tree-collage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    margin: 4rem 0;
+  }
+  .family-tree-row {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
+  .family-tree-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    min-width: 160px;
+    max-width: 220px;
+  }
+  .family-tree-node img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid #eee;
+  }
+  .family-tree-node .name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--main-font, Arial, sans-serif);
+  }
+  .family-tree-node .desc {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    font-family: var(--main-font, Arial, sans-serif);
+  }
+  @media (max-width: 700px) {
+    .family-tree-row {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+</style>
+
+<div class="family-tree-collage">
+  {% for row in (1..section.settings.rows) %}
+    <div class="family-tree-row">
+      {% for block in section.blocks %}
+        {% if block.settings.row == row %}
+          <div class="family-tree-node">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 300, height: 300 }}"
+                alt="{{ block.settings.name | escape }}"
+                width="100"
+                height="100"
+              >
+            {% endif %}
+            {% if block.settings.name != blank %}
+              <div class="name">{{ block.settings.name }}</div>
+            {% endif %}
+            {% if block.settings.desc != blank %}
+              <div class="desc">{{ block.settings.desc }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Photo Collage Family Tree",
+  "settings": [
+    {
+      "type": "number",
+      "id": "rows",
+      "label": "Number of rows",
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "node",
+      "name": "Family Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Description"
+        },
+        {
+          "type": "number",
+          "id": "row",
+          "label": "Row (1 = top, 2 = middle, ...)",
+          "default": 1
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Photo Collage Family Tree",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

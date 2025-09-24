@@ -1,0 +1,12 @@
+Griglia Prodotti
+
+Colonne: 3
+
+Scheda Prodotto
+Proporzioni delle immagini: Quadrate 
+
+Filtri e Ordinamento
+Layout dei filtri: verticale
+
+Impostazioni Tema
+Larghezza pagina: 1600px

@@ -10,8 +10,15 @@
 
   /* Main font */
   --main-font: "Lexend Deca", sans-serif;
+  --regular-font-weight: 300;
   /* Navlink color */
   --nav-link-color: rgba(0,0,0, 0.65);
+}
+
+/* Change All Fonts */
+
+p, a, li, span, input, button, select, textarea, h1, h2, .rte {
+  font-family: var(--main-font) !important;
 }
 
 
@@ -2824,7 +2831,7 @@ details[open] > .header__submenu {
   color: var(--nav-link-color);
   font-family: var(--main-font);
   font-size: 1vw !important;
-  font-weight: 300;
+  font-weight: var(--regular-font-weight);
 }
 
 .header__menu-item:hover {
