@@ -1,13 +1,13 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "TGESolutions Repshop Theme",
+    "theme_name": "TGESolutions Repshop",
     "theme_version": "1.0.0",
     "theme_author": "LoGiudice WebStudios",
     "theme_documentation_url": "https://agribit.it",
     "theme_support_url": "https://agribit.it"
   },
-    {
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {
