@@ -1,0 +1,202 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_7Y9HD7": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_pmRD36": {
+          "type": "heading",
+          "settings": {
+            "heading": "BULK & EVENT GEAR",
+            "heading_size": "h1"
+          }
+        },
+        "text_XR3tgL": {
+          "type": "text",
+          "settings": {
+            "text": "Lorem ipsum dolor sit amet consectetur adipiscing elit, sem pellentesque bibendum penatibus vel imperdiet habitasse cum, dignissim conubia ",
+            "text_style": "body"
+          }
+        },
+        "buttons_TrcAFF": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Bulk Orders",
+            "button_link_1": "shopify://pages/ws-account-create",
+            "button_style_secondary_1": false,
+            "button_label_2": "Event Gear",
+            "button_link_2": "shopify://collections/event-gear",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_pmRD36",
+        "text_XR3tgL",
+        "buttons_TrcAFF"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "rich_text_FtgrKL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_4eVcqP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem Ipossum",
+            "heading_size": "h1"
+          }
+        },
+        "text_KHBnBF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sem pellentesque bibendum penatibus vel imperdiet habitasse cum, dignissim conubia</p>"
+          }
+        },
+        "button_GiEJn3": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_4eVcqP",
+        "text_KHBnBF",
+        "button_GiEJn3"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_EjFYmF": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_D3tdP9": {
+          "type": "column",
+          "settings": {
+            "title": "Bulk Ordering",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "Shop",
+            "link": "shopify://pages/bulk-ordering"
+          }
+        },
+        "column_KMp6yJ": {
+          "type": "column",
+          "settings": {
+            "title": "Event Gear",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "Shop",
+            "link": "shopify://collections/event-gear"
+          }
+        }
+      },
+      "block_order": [
+        "column_D3tdP9",
+        "column_KMp6yJ"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "photo_collage_family_tree_HJVaHR": {
+      "type": "photo-collage-family-tree",
+      "blocks": {
+        "node_JdDwL8": {
+          "type": "node",
+          "settings": {
+            "image": "shopify://shop_images/stock-photo-scenic-view-snowy-mountains-pine-trees-white-fluffy-clouds-sunlight.webp",
+            "date": "2024",
+            "name": "Lorem Ipossum",
+            "desc": "Lorem ipsum dolor sit amet consectetur adipiscing elit, augue parturient consequat suspendisse nascetur semper, cursus condimentum ac erat curae eleifend. Sapien non rhoncus montes suscipit"
+          }
+        },
+        "node_fHqX3b": {
+          "type": "node",
+          "settings": {
+            "image": "shopify://shop_images/stock-photo-scenic-view-snowy-mountains-pine-trees-white-fluffy-clouds.webp",
+            "date": "2025",
+            "name": "Lorem Ipossum",
+            "desc": "Lorem ipsum dolor sit amet consectetur adipiscing elit, augue parturient consequat suspendisse nascetur semper, cursus condimentum ac erat curae eleifend. Sapien non rhoncus montes suscipit"
+          }
+        },
+        "node_BRFN96": {
+          "type": "node",
+          "settings": {
+            "image": "shopify://shop_images/sm-mistysunrise_tamnelsonrudiak_700.jpg",
+            "date": "2026",
+            "name": "Lorem Ipossum",
+            "desc": "Lorem ipsum dolor sit amet consectetur adipiscing elit, augue parturient consequat suspendisse nascetur semper, cursus condimentum ac erat curae eleifend. Sapien non rhoncus montes suscipit"
+          }
+        }
+      },
+      "block_order": [
+        "node_JdDwL8",
+        "node_fHqX3b",
+        "node_BRFN96"
+      ],
+      "name": "Photo Collage Timeline",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_7Y9HD7",
+    "rich_text_FtgrKL",
+    "multicolumn_EjFYmF",
+    "photo_collage_family_tree_HJVaHR"
+  ]
+}
