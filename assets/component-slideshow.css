@@ -44,6 +44,16 @@ slideshow-component .slideshow.banner {
   max-width: 100%;
 }
 
+/* Make slideshow full viewport height minus navbar (assume navbar height: 80px, adjust as needed) */
+@media screen and (min-width: 1200px) {
+  slideshow-component,
+  .slideshow.banner {
+    min-height: calc(100vh - 80px) !important;
+    height: calc(100vh - 80px) !important;
+    max-height: calc(100vh - 80px) !important;
+  }
+}
+
 @media screen and (max-width: 749px) {
   slideshow-component.page-width .slideshow__text {
     border-right: var(--text-boxes-border-width) solid rgba(var(--color-foreground), var(--text-boxes-border-opacity));
@@ -109,6 +119,10 @@ slideshow-component .slideshow.banner {
   z-index: 1;
 }
 
+.slideshow__controls{
+  width: 100% !important;
+}
+
 @media screen and (max-width: 749px) {
   .slideshow__controls--border-radius-mobile {
     border-bottom-right-radius: var(--text-boxes-radius);
@@ -120,20 +134,73 @@ slideshow-component .slideshow.banner {
   border-bottom: none;
 }
 
+/* Overlay slideshow controls inside the image, bottom right, with transparent background */
 @media screen and (min-width: 750px) {
   .slideshow__controls {
-    position: relative;
+    position: absolute !important;
+    bottom: 2.5rem !important;
+    right: 2.5rem !important;
+    left: auto !important;
+    top: auto !important;
+    z-index: 10 !important;
+    background: none !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.8rem !important;
+    align-items: center;
+    border: none !important;
+    pointer-events: none;
+  }
+  .slideshow__controls > * {
+    pointer-events: auto;
+  }
+  .slideshow__controls .slider-button,
+  .slideshow__controls .slideshow__autoplay {
+    background: #fff !important;
+    color: #222 !important;
+    border-radius: 50% !important;
+    width: 54px !important;
+    height: 54px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border: none !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
+    margin: 0 !important;
+    transition: background 0.2s, color 0.2s;
+  }
+  .slideshow__controls .slider-button:hover,
+  .slideshow__controls .slideshow__autoplay:hover {
+    background: #222 !important;
+    color: #fff !important;
+  }
+}
+@media (max-width: 749px) {
+  .slideshow__controls {
+    position: absolute !important;
+    bottom: 1rem !important;
+    right: 1rem !important;
+    gap: 0.4rem !important;
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .slideshow__controls .slider-button,
+  .slideshow__controls .slideshow__autoplay {
+    background: #fff !important;
+    color: #222 !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .slideshow__controls .slider-button:hover,
+  .slideshow__controls .slideshow__autoplay:hover {
+    background: #222 !important;
+    color: #fff !important;
   }
 }
 
-slideshow-component:not(.page-width) .slider-buttons {
-  border-right: 0;
-  border-left: 0;
-}
 
-.slideshow__control-wrapper {
-  display: flex;
-}
 
 .slideshow__autoplay {
   position: absolute;
@@ -159,16 +226,7 @@ slideshow-component:not(.page-width) .slider-buttons {
   }
 }
 
-.slideshow__autoplay .icon.icon-play,
-.slideshow__autoplay .icon.icon-pause {
-  display: block;
-  position: absolute;
-  opacity: 1;
-  transform: scale(1);
-  transition: transform 150ms ease, opacity 150ms ease;
-  width: 0.8rem;
-  height: 1.2rem;
-}
+
 
 .slideshow__autoplay .icon.icon-play {
   height: 1rem;
