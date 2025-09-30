@@ -1,0 +1,120 @@
+{% comment %}
+  Three-column section, 80% page width, with spacing between columns and more rectangular shape.
+{% endcomment %}
+<style>
+  .three-col-bg-section {
+    display: flex;
+    width: 80vw;
+    max-width: 80vw;
+    min-height: 420px;
+    gap: 2rem;
+    margin: 10rem auto; /* Adds space above and below */
+    padding: 0;
+  }
+  .three-col-bg-section .col {
+    flex: 1 1 0;
+    position: relative;
+    min-height: 420px;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+  .three-col-bg-section .col .col-btn {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    background: #fff;
+    color: #222;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-radius: 2rem;
+    padding: 0.7rem 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s, color 0.2s;
+    border: none;
+    display: inline-block;
+  }
+  .three-col-bg-section .col .col-btn:hover {
+    background: #222;
+    color: #fff;
+  }
+  @media (max-width: 900px) {
+    .three-col-bg-section {
+      flex-direction: column;
+      width: 98vw;
+      max-width: 98vw;
+      gap: 1rem;
+      min-height: 300px;
+    }
+    .three-col-bg-section .col {
+      min-height: 320px;
+      aspect-ratio: 4 / 5;
+    }
+    .three-col-bg-section .col .col-btn {
+      left: 16px;
+      bottom: 16px;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+</style>
+
+<div class="three-col-bg-section">
+  {% for block in section.blocks %}
+    <div
+      class="col"
+      style="background-image: url('{{ block.settings.bg_image | image_url: width: 800 }}');"
+    >
+      {% if block.settings.button_text != blank and block.settings.button_link != blank %}
+        <a href="{{ block.settings.button_link }}" class="col-btn">
+          {{ block.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Three Column BG Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Three Column Background Section",
+      "blocks": [{ "type": "column" }, { "type": "column" }, { "type": "column" }]
+    }
+  ]
+}
+{% endschema %}

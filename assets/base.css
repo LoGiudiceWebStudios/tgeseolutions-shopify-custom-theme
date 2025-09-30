@@ -12,6 +12,7 @@
   --main-font: "Lexend Deca", sans-serif;
   --regular-font-weight: 300;
   /* Navlink color */
+  --nav-link-size: 1vw;
   --nav-link-color: rgba(0,0,0, 0.65);
 }
 
@@ -21,6 +22,49 @@ p, a, li, span, input, button, select, textarea, h1, h2, .rte {
   font-family: var(--main-font) !important;
 }
 
+/* Change Navlink font size */
+.header__menu-item span{
+  font-size: var(--nav-link-size) !important;
+}
+
+.header__menu-item{
+  padding: 0.5rem !important;
+}
+
+.list-menu--inline{
+  gap: 1.5vw;
+}
+
+/* Header Text Box */
+
+.slideshow__text{
+  color: white !important;
+
+
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 0px 0px rgba(255, 255, 255, 0) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.slideshow__text.banner__box{
+  max-width: none !important;
+}
+
+.banner__heading{
+  color: white !important;
+  text-transform: uppercase !important;
+  font-size: 5vw !important;
+  font-weight: 900 !important;
+}
 
 .product-card-wrapper .card,
 .contains-card--product {
