@@ -35,6 +35,37 @@ p, a, li, span, input, button, select, textarea, h1, h2, .rte {
   gap: 1.5vw;
 }
 
+/* CUSTOM CSS FOR LOGIN BUTTON ANNOUNCEMENT BAR */
+/* Rende l'announcement bar un contenitore flex per allineare gli elementi */
+.announcement-bar {
+  display: flex;
+  justify-content: space-between; /* Spinge il testo a sinistra e il link a destra */
+  align-items: center;
+  padding-left: 2rem; /* Aggiunge un po' di spazio */
+  padding-right: 2rem;
+}
+
+.announcement-bar__message {
+  margin: 0; /* Rimuove margini di default */
+}
+
+.announcement-bar__account-link {
+  display: flex; /* Allinea l'icona e il testo */
+  align-items: center;
+  gap: 0.5rem; /* Spazio tra icona e testo */
+  text-decoration: none;
+  color: inherit; /* Eredita il colore del testo dell'announcement bar */
+}
+
+.announcement-bar__account-link:hover {
+  text-decoration: underline;
+}
+
+.announcement-bar__account-link svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
 /* Header Text Box */
 
 .slideshow__text{
