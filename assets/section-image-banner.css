@@ -500,9 +500,9 @@
 /* MAKE THE SECTION FULL SIZE ON DESKTOP */
 
 @media screen and (min-width: 1200px) {
-  .banner,
-  .banner .banner__media,
-  .banner img {
+  body.template-index .banner,
+  body.template-index .banner .banner__media,
+  body.template-index .banner img {
     min-height: 100vh !important;
     height: 100vh !important;
     max-height: 100vh !important;
@@ -510,7 +510,7 @@
     object-fit: cover !important;
     display: block;
   }
-  .banner__content {
+  body.template-index .banner__content {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -523,9 +523,7 @@
     z-index: 2;
     padding: 0 !important;
   }
-
-  div.banner__content.banner__content--middle-center.page-width.scroll-trigger.animate--slide-in{
+  body.template-index div.banner__content.banner__content--middle-center.page-width.scroll-trigger.animate--slide-in{
     position: relative;
   }
-
 }
