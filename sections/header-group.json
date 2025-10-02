@@ -11,31 +11,6 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "disabled": true,
-          "settings": {
-            "text": "Welcome to our store",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "announcement-bar-0"
-      ],
-      "settings": {
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "color_scheme": "",
-        "show_line_separator": true,
-        "show_social": false,
-        "enable_country_selector": false,
-        "enable_language_selector": false
-      }
-    },
     "header": {
       "type": "header",
       "settings": {
@@ -54,10 +29,36 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "custom_announcement_bar_rwDFTJ": {
+      "type": "custom-announcement-bar",
+      "blocks": {
+        "dropdown_RWN9nA": {
+          "type": "dropdown",
+          "settings": {
+            "label": "Help",
+            "dropdown_label_1": "Contact",
+            "dropdown_url_1": "",
+            "dropdown_label_2": "",
+            "dropdown_url_2": "",
+            "dropdown_label_3": "",
+            "dropdown_url_3": "",
+            "dropdown_label_4": "",
+            "dropdown_url_4": "",
+            "dropdown_label_5": "",
+            "dropdown_url_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_RWN9nA"
+      ],
+      "name": "Custom Announcement Bar",
+      "settings": {}
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "header",
+    "custom_announcement_bar_rwDFTJ"
   ]
 }
