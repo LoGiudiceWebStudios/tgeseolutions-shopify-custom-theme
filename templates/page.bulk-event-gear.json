@@ -151,52 +151,12 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "photo_collage_family_tree_HJVaHR": {
-      "type": "photo-collage-family-tree",
-      "blocks": {
-        "node_JdDwL8": {
-          "type": "node",
-          "settings": {
-            "image": "shopify://shop_images/stock-photo-scenic-view-snowy-mountains-pine-trees-white-fluffy-clouds-sunlight.webp",
-            "date": "2024",
-            "name": "Lorem Ipossum",
-            "desc": "Lorem ipsum dolor sit amet consectetur adipiscing elit, augue parturient consequat suspendisse nascetur semper, cursus condimentum ac erat curae eleifend. Sapien non rhoncus montes suscipit"
-          }
-        },
-        "node_fHqX3b": {
-          "type": "node",
-          "settings": {
-            "image": "shopify://shop_images/stock-photo-scenic-view-snowy-mountains-pine-trees-white-fluffy-clouds.webp",
-            "date": "2025",
-            "name": "Lorem Ipossum",
-            "desc": "Lorem ipsum dolor sit amet consectetur adipiscing elit, augue parturient consequat suspendisse nascetur semper, cursus condimentum ac erat curae eleifend. Sapien non rhoncus montes suscipit"
-          }
-        },
-        "node_BRFN96": {
-          "type": "node",
-          "settings": {
-            "image": "shopify://shop_images/sm-mistysunrise_tamnelsonrudiak_700.jpg",
-            "date": "2026",
-            "name": "Lorem Ipossum",
-            "desc": "Lorem ipsum dolor sit amet consectetur adipiscing elit, augue parturient consequat suspendisse nascetur semper, cursus condimentum ac erat curae eleifend. Sapien non rhoncus montes suscipit"
-          }
-        }
-      },
-      "block_order": [
-        "node_JdDwL8",
-        "node_fHqX3b",
-        "node_BRFN96"
-      ],
-      "name": "Photo Collage Timeline",
-      "settings": {}
     }
   },
   "order": [
     "main",
     "image_banner_7Y9HD7",
     "rich_text_FtgrKL",
-    "multicolumn_EjFYmF",
-    "photo_collage_family_tree_HJVaHR"
+    "multicolumn_EjFYmF"
   ]
 }
