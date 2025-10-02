@@ -1,0 +1,174 @@
+{% comment %}
+  Spotlight section: Centered title, paragraph, and a row of icons with title (as link), all manageable from the Shopify editor.
+{% endcomment %}
+<style>
+  .spotlight-section {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 1rem 2rem 1rem;
+    text-align: center;
+  }
+  .spotlight-title {
+    font-family: 'Lexend Deca', Arial, sans-serif;
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+    color: black;
+  }
+  .spotlight-desc {
+    font-size: 2rem;
+    font-family: 'Lexend Deca', Arial, sans-serif;
+    margin-bottom: 4rem;
+    font-weight: 400;
+  }
+  .spotlight-icons-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .spotlight-icon-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+    max-width: 180px;
+  }
+  .spotlight-icon-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 1.2rem;
+    background: none;
+    display: block;
+  }
+  .spotlight-icon-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: 'Lexend Deca', Arial, sans-serif;
+    margin-bottom: 0.3rem;
+  }
+  .spotlight-icon-title a {
+    color: #111;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  .spotlight-icon-title a:hover {
+    color: #0f71ac;
+  }
+  @media (max-width: 900px) {
+    .spotlight-title {
+      font-size: 2.8rem;
+    }
+    .spotlight-desc {
+      font-size: 1.2rem;
+    }
+    .spotlight-icons-row {
+      gap: 1.5rem;
+    }
+    .spotlight-icon-img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  @media (max-width: 700px) {
+    .spotlight-section {
+      padding: 2rem 0.5rem 1rem 0.5rem;
+    }
+    .spotlight-icons-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 2.2rem;
+    }
+    .spotlight-icon-block {
+      min-width: 0;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<section class="spotlight-section">
+  {% if section.settings.title != blank %}
+    <div class="spotlight-title">{{ section.settings.title }}</div>
+  {% endif %}
+  {% if section.settings.desc != blank %}
+    <div class="spotlight-desc">{{ section.settings.desc }}</div>
+  {% endif %}
+  <div class="spotlight-icons-row">
+    {% for block in section.blocks %}
+      <div class="spotlight-icon-block">
+        {% if block.settings.icon != blank %}
+          <img
+            class="spotlight-icon-img"
+            src="{{ block.settings.icon | image_url: width: 180 }}"
+            alt="{{ block.settings.icon_title | escape }}"
+            width="120"
+            height="120"
+          >
+        {% endif %}
+        {% if block.settings.icon_title != blank and block.settings.icon_link != blank %}
+          <div class="spotlight-icon-title">
+            <a href="{{ block.settings.icon_link }}">
+              {{ block.settings.icon_title }}
+            </a>
+          </div>
+        {% elsif block.settings.icon_title != blank %}
+          <div class="spotlight-icon-title">{{ block.settings.icon_title }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Spotlight Icons Row",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "SPOTLIGHT"
+    },
+    {
+      "type": "text",
+      "id": "desc",
+      "label": "Section Description",
+      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit dapibus nisi."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_title",
+          "label": "Icon Title"
+        },
+        {
+          "type": "url",
+          "id": "icon_link",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spotlight Icons Row",
+      "blocks": [{ "type": "icon" }, { "type": "icon" }, { "type": "icon" }]
+    }
+  ]
+}
+{% endschema %}

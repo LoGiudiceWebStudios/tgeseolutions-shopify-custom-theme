@@ -490,3 +490,42 @@
     color: currentColor;
   }
 }
+
+
+
+.banner__heading{
+  color: black !important;
+}
+
+/* MAKE THE SECTION FULL SIZE ON DESKTOP */
+
+@media screen and (min-width: 1200px) {
+  .banner,
+  .banner .banner__media,
+  .banner img {
+    min-height: 100vh !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    width: 100vw !important;
+    object-fit: cover !important;
+    display: block;
+  }
+  .banner__content {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    width: 100vw !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 0 !important;
+  }
+
+  div.banner__content.banner__content--middle-center.page-width.scroll-trigger.animate--slide-in{
+    position: relative;
+  }
+
+}
