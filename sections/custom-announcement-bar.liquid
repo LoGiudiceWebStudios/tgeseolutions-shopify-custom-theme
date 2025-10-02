@@ -1,0 +1,166 @@
+{% comment %}
+  Custom Announcement Bar: black background, white text, sticky at the top, each word is a link, "Help" is a dropdown menu. All links are manageable from the Shopify editor.
+{% endcomment %}
+<style>
+  @media (max-width: 700px) {
+    .announcement-bar__links {
+      display: none !important;
+    }
+
+    body {
+      /* padding-top: 48px; */
+      padding-top: 0 !important;
+    }
+  }
+
+  .announcement-bar__links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5rem;
+    height: 48px;
+    background: #111;
+    color: #fff;
+    font-family: 'Lexend Deca', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  .announcement-bar__links a,
+  .announcement-bar__dropdown > .dropdown-toggle {
+    color: #fff;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.35rem;
+    padding: 0;
+    font-family: inherit;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .announcement-bar__links a:hover,
+  .announcement-bar__dropdown > .dropdown-toggle:hover {
+    color: rgba(143, 143, 143, 1) !important;
+  }
+  .announcement-bar__dropdown {
+    position: relative;
+  }
+  .announcement-bar__dropdown .dropdown-toggle::after {
+    content: ' ▼';
+    font-size: 0.8em;
+  }
+  .announcement-bar__dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 2.2rem;
+    left: 0;
+    background: #111;
+    border: 1px solid #222;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    min-width: 160px;
+    z-index: 10;
+    flex-direction: column;
+  }
+  .announcement-bar__dropdown:hover .dropdown-menu,
+  .announcement-bar__dropdown:focus-within .dropdown-menu {
+    display: flex;
+  }
+  .announcement-bar__dropdown .dropdown-menu a {
+    padding: 0.75rem 1.2rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.15rem;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: background 0.2s, color 0.2s;
+  }
+  .announcement-bar__dropdown .dropdown-menu a:hover {
+    background: #222;
+    color: rgba(143, 143, 143, 1) !important;
+  }
+  @media (max-width: 700px) {
+    .announcement-bar__links {
+      gap: 1rem;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+      padding: 0 0.5rem;
+      height: auto;
+    }
+  }
+  body {
+    /* Pushes down the rest of the content so it's not hidden under the bar */
+    padding-top: 48px;
+  }
+</style>
+
+<div class="announcement-bar__links">
+  {% for block in section.blocks %}
+    {% if block.type == 'link' %}
+      <a href="{{ block.settings.url }}">{{ block.settings.label }}</a>
+    {% elsif block.type == 'dropdown' %}
+      <div class="announcement-bar__dropdown">
+        <button class="dropdown-toggle" tabindex="0">{{ block.settings.label }}</button>
+        <div class="dropdown-menu">
+          {% for i in (1..5) %}
+            {% assign dropdown_label = 'dropdown_label_' | append: i %}
+            {% assign dropdown_url = 'dropdown_url_' | append: i %}
+            {% if block.settings[dropdown_label] != blank %}
+              <a href="{{ block.settings[dropdown_url] }}">{{ block.settings[dropdown_label] }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+  {% if customer %}
+    <a href="/account">Account</a>
+  {% else %}
+    <a href="/account/login">Sign In</a>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Announcement Bar",
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Link" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "name": "Dropdown",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Dropdown Label", "default": "Help" },
+        { "type": "text", "id": "dropdown_label_1", "label": "Item 1 Label" },
+        { "type": "url", "id": "dropdown_url_1", "label": "Item 1 URL" },
+        { "type": "text", "id": "dropdown_label_2", "label": "Item 2 Label" },
+        { "type": "url", "id": "dropdown_url_2", "label": "Item 2 URL" },
+        { "type": "text", "id": "dropdown_label_3", "label": "Item 3 Label" },
+        { "type": "url", "id": "dropdown_url_3", "label": "Item 3 URL" },
+        { "type": "text", "id": "dropdown_label_4", "label": "Item 4 Label" },
+        { "type": "url", "id": "dropdown_url_4", "label": "Item 4 URL" },
+        { "type": "text", "id": "dropdown_label_5", "label": "Item 5 Label" },
+        { "type": "url", "id": "dropdown_url_5", "label": "Item 5 URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Announcement Bar",
+      "blocks": [{ "type": "link" }, { "type": "link" }, { "type": "dropdown" }]
+    }
+  ]
+}
+{% endschema %}
