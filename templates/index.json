@@ -93,6 +93,42 @@
         "padding_bottom": 0
       }
     },
+    "featured_columns_8pN6J8": {
+      "type": "featured-columns",
+      "blocks": {
+        "column_TNrXb8": {
+          "type": "column",
+          "settings": {
+            "bg_image": "shopify://shop_images/stock-photo-scenic-view-snowy-mountains-pine-trees-white-fluffy-clouds.webp",
+            "button_text": "Visit",
+            "button_link": "shopify://collections/apparel"
+          }
+        },
+        "column_dVmMcB": {
+          "type": "column",
+          "settings": {
+            "bg_image": "shopify://shop_images/sm-mistysunrise_tamnelsonrudiak_700.jpg",
+            "button_text": "Visit",
+            "button_link": "shopify://collections/apparel"
+          }
+        },
+        "column_H8HdHL": {
+          "type": "column",
+          "settings": {
+            "bg_image": "shopify://shop_images/110003.jpg",
+            "button_text": "Visit",
+            "button_link": "shopify://collections/apparel"
+          }
+        }
+      },
+      "block_order": [
+        "column_TNrXb8",
+        "column_dVmMcB",
+        "column_H8HdHL"
+      ],
+      "name": "Three Column Background Section",
+      "settings": {}
+    },
     "image_banner_wq3ihH": {
       "type": "image-banner",
       "blocks": {
@@ -141,73 +177,48 @@
         "show_text_below": true
       }
     },
-    "collapsible_content_9ULqey": {
-      "type": "collapsible-content",
+    "spotlight_gWr7gb": {
+      "type": "spotlight",
       "blocks": {
-        "collapsible_row_KBnkkp": {
-          "type": "collapsible_row",
+        "icon_hk3dMd": {
+          "type": "icon",
           "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
-            "page": ""
+            "icon_title": "",
+            "icon_link": ""
           }
         },
-        "collapsible_row_hTNzKp": {
-          "type": "collapsible_row",
+        "icon_QNq3W8": {
+          "type": "icon",
           "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
-            "page": ""
+            "icon_title": "",
+            "icon_link": ""
           }
         },
-        "collapsible_row_k3ht6X": {
-          "type": "collapsible_row",
+        "icon_MF9Ew7": {
+          "type": "icon",
           "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
-            "page": ""
-          }
-        },
-        "collapsible_row_hrm8Wf": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
-            "page": ""
+            "icon_title": "",
+            "icon_link": ""
           }
         }
       },
       "block_order": [
-        "collapsible_row_KBnkkp",
-        "collapsible_row_hTNzKp",
-        "collapsible_row_k3ht6X",
-        "collapsible_row_hrm8Wf"
+        "icon_hk3dMd",
+        "icon_QNq3W8",
+        "icon_MF9Ew7"
       ],
-      "name": "t:sections.collapsible_content.presets.name",
+      "name": "Spotlight Icons Row",
       "settings": {
-        "caption": "",
-        "heading": "FAQs",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "none",
-        "container_color_scheme": "",
-        "color_scheme": "",
-        "open_first_collapsible_row": false,
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "title": "SPOTLIGHT",
+        "desc": "Lorem ipsum dolor sit amet consectetur adipiscing elit dapibus nisi."
       }
     }
   },
   "order": [
     "slideshow_7XYEY3",
     "rich_text",
+    "featured_columns_8pN6J8",
     "image_banner_wq3ihH",
-    "collapsible_content_9ULqey"
+    "spotlight_gWr7gb"
   ]
 }
