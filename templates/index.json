@@ -183,28 +183,31 @@
         "icon_hk3dMd": {
           "type": "icon",
           "settings": {
-            "icon_title": "",
-            "icon_link": ""
+            "icon": "shopify://shop_images/3d-model-of-a-orange-t-shirt-without-background.png",
+            "icon_title": "T-Shirts",
+            "icon_link": "shopify://collections/apparel"
           }
         },
-        "icon_QNq3W8": {
+        "icon_Q39MmU": {
           "type": "icon",
           "settings": {
-            "icon_title": "",
-            "icon_link": ""
+            "icon": "shopify://shop_images/generate-an-image-of-a-black-hat-with-white-text-without-background.png",
+            "icon_title": "Hats",
+            "icon_link": "shopify://collections/apparel"
           }
         },
         "icon_MF9Ew7": {
           "type": "icon",
           "settings": {
-            "icon_title": "",
-            "icon_link": ""
+            "icon": "shopify://shop_images/an-image-of-a-belt-without-background.png",
+            "icon_title": "Accessories",
+            "icon_link": "shopify://collections/accessories"
           }
         }
       },
       "block_order": [
         "icon_hk3dMd",
-        "icon_QNq3W8",
+        "icon_Q39MmU",
         "icon_MF9Ew7"
       ],
       "name": "Spotlight Icons Row",
