@@ -1,0 +1,346 @@
+{% comment %}
+  Custom Footer Section for Shopify, inspired by the provided WordPress footer.
+{% endcomment %}
+<style>
+  .footer {
+    gap: 1vw;
+
+    align-self: center;
+    width: 90vw;
+    margin-top: 5% !important;
+    margin-bottom: 5%;
+    margin: 0 auto;
+    font-family: 'Lexend Deca', Arial, sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+  }
+  .footer-logo-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 25vw;
+  }
+  .footer-logo {
+    width: 70%;
+    margin-bottom: 1vw;
+  }
+  .footer-logo-description {
+    width: 100%;
+    text-align: left;
+    font-weight: 300;
+    color: black;
+  }
+  .footer-subcontainer {
+    display: flex;
+    flex-direction: row;
+    justify-self: flex-end;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    max-width: fit-content;
+    gap: 10vw;
+  }
+  .footer .title-small {
+    font-size: 1vw;
+    width: 100%;
+    font-weight: 500;
+    color: black;
+  }
+  .footer .quick-links,
+  .connect-with-us,
+  .stay-updated {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+  }
+  .footer-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer .item {
+    font-size: 0.8vw;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    font-weight: 300;
+    color: black;
+  }
+
+  .footer-line {
+    display: block !important;
+    width: 100%;
+    height: 0.2vh;
+    background-color: black;
+  }
+
+  .technical-links {
+    width: 100%;
+    margin-bottom: 0.5vw;
+  }
+  .technical-links a {
+    color: #222;
+    text-decoration: underline;
+    font-size: 0.9vw;
+    font-weight: 300;
+  }
+  .copyright {
+    width: 100%;
+    font-size: 0.9vw;
+    color: #888;
+    margin-bottom: 1vw;
+  }
+  .stay-updated .item a {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    color: #222;
+    text-decoration: none;
+  }
+  .stay-updated .item a:hover {
+    text-decoration: underline;
+  }
+  .footer .fa-brands,
+  .footer .fa-solid {
+    font-size: 1.1vw;
+  }
+  @media (max-width: 699px) {
+    .footer {
+      gap: 5vw;
+      margin-top: 35% !important;
+    }
+
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-logo-block {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 5vw;
+      padding: 5%;
+      align-items: flex-start !important;
+      padding-left: 0 !important;
+    }
+    .footer-logo {
+      width: 60%;
+      margin-bottom: 3vw;
+    }
+    .footer-logo-description {
+      text-align: left;
+      width: 100%;
+      font-weight: 300;
+      font-size: 4.2vw;
+    }
+    .footer-subcontainer {
+      flex-direction: column;
+      gap: 5vw;
+      width: 100%;
+      align-items: flex-start !important;
+      align-self: flex-start;
+      text-align: left;
+    }
+    .footer .title-small {
+      font-size: 5vw;
+    }
+    .footer .item,
+    .technical-links,
+    .copyright {
+      font-size: 4vw;
+    }
+    .technical-links a {
+      font-size: 4vw !important;
+    }
+  }
+</style>
+
+<footer class="section-container footer">
+  <div class="footer-container container">
+    <div class="footer-logo-block">
+      {% if section.settings.logo != blank %}
+        <img
+          src="{{ section.settings.logo | image_url: width: 400 }}"
+          alt="Footer Logo"
+          class="footer-logo"
+          width="400"
+          height="auto"
+        >
+      {% else %}
+        <a href="/" class="site-title">{{ shop.name }}</a>
+      {% endif %}
+      {% if section.settings.footer_text != blank %}
+        <div class="footer-logo-description description-small">
+          {{ section.settings.footer_text }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="footer-subcontainer container">
+      <div class="quick-links">
+        <div class="bold title-small">{{ section.settings.quick_links_title }}</div>
+        <ul class="footer-navigation">
+          {% for block in section.blocks %}
+            {% if block.type == 'quick_link' %}
+              <li>
+                <a href="{{ block.settings.link_url }}">{{ block.settings.link_label }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="connect-with-us">
+        <div class="bold title-small">{{ section.settings.connect_title }}</div>
+        {% if section.settings.phone != blank %}
+          <div class="item"><i class="fa-solid fa-phone"></i>{{ section.settings.phone }}</div>
+        {% endif %}
+        {% if section.settings.email != blank %}
+          <div class="item"><i class="fa-solid fa-envelope"></i>{{ section.settings.email }}</div>
+        {% endif %}
+      </div>
+      <div class="stay-updated">
+        <div class="bold title-small">{{ section.settings.social_title }}</div>
+        {% for block in section.blocks %}
+          {% if block.type == 'social' and block.settings.social_url != blank %}
+            <div class="item">
+              <a href="{{ block.settings.social_url }}" target="_blank">
+                <i class="fa-brands fa-{{ block.settings.social_icon }}"></i> {{ block.settings.social_label }}
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="footer-line"></div>
+  <div class="technical-links">
+    {% if section.settings.privacy_url != blank %}
+      <a href="{{ section.settings.privacy_url }}">Privacy Policy</a>
+    {% endif %}
+    {% if section.settings.terms_url != blank %}
+      &nbsp;|&nbsp;<a href="{{ section.settings.terms_url }}">Terms of Service</a>
+    {% endif %}
+  </div>
+  <div class="copyright">
+    © {{ 'now' | date: '%Y' }}
+    {{ shop.name }}. All rights reserved.
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Custom Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer Description"
+    },
+    {
+      "type": "text",
+      "id": "quick_links_title",
+      "label": "Quick Links Title",
+      "default": "Quick Links"
+    },
+    {
+      "type": "text",
+      "id": "connect_title",
+      "label": "Connect With Us Title",
+      "default": "Connect With Us"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number",
+      "default": "(877) 843-0496"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "info@tgesolar.com"
+    },
+    {
+      "type": "text",
+      "id": "social_title",
+      "label": "Stay Updated Title",
+      "default": "Stay Updated"
+    },
+    {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "Privacy Policy URL"
+    },
+    {
+      "type": "url",
+      "id": "terms_url",
+      "label": "Terms of Service URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quick_link",
+      "name": "Quick Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
+      "type": "social",
+      "name": "Social Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "social_label",
+          "label": "Social Name (e.g. Facebook)"
+        },
+        {
+          "type": "text",
+          "id": "social_icon",
+          "label": "FontAwesome Icon (es: facebook, instagram, youtube)"
+        },
+        {
+          "type": "url",
+          "id": "social_url",
+          "label": "Social URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer",
+      "blocks": [{ "type": "quick_link" }, { "type": "quick_link" }, { "type": "social" }, { "type": "social" }]
+    }
+  ]
+}
+{% endschema %}
