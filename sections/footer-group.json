@@ -11,6 +11,59 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "custom_footer_Cgp9iC": {
+      "type": "custom-footer",
+      "blocks": {
+        "quick_link_6GAz4i": {
+          "type": "quick_link",
+          "settings": {
+            "link_label": "",
+            "link_url": ""
+          }
+        },
+        "quick_link_jhzpmR": {
+          "type": "quick_link",
+          "settings": {
+            "link_label": "",
+            "link_url": ""
+          }
+        },
+        "social_tGck3e": {
+          "type": "social",
+          "settings": {
+            "social_label": "",
+            "social_icon": "",
+            "social_url": ""
+          }
+        },
+        "social_yK6jTR": {
+          "type": "social",
+          "settings": {
+            "social_label": "",
+            "social_icon": "",
+            "social_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "quick_link_6GAz4i",
+        "quick_link_jhzpmR",
+        "social_tGck3e",
+        "social_yK6jTR"
+      ],
+      "name": "Custom Footer",
+      "settings": {
+        "logo": "shopify://shop_images/logo-main.png",
+        "footer_text": "At TGE Solutions, our mission is to help homeowners protect and power what matters most. We believe in doing the job right the first time - with transparency, respect, and care for your property and your family.",
+        "quick_links_title": "Quick Links",
+        "connect_title": "Connect With Us",
+        "phone": "(877) 843-0496",
+        "email": "info@tgesolar.com",
+        "social_title": "Stay Updated",
+        "privacy_url": "shopify://pages/data-sharing-opt-out",
+        "terms_url": ""
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -41,6 +94,7 @@
         "footer-1",
         "footer-2"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": false,
@@ -58,6 +112,7 @@
     }
   },
   "order": [
+    "custom_footer_Cgp9iC",
     "footer"
   ]
 }
