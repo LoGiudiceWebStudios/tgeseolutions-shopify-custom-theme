@@ -164,3 +164,81 @@
   ]
 }
 {% endschema %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // --- 1. CONFIGURAZIONE ---
+    // Aggiungi qui i tuoi domini aziendali.
+    // Assicurati che siano tutti in minuscolo.
+    // Esempio: ['azienda.com', 'shop-interno.it']
+
+    const allowedDomains = ['tuodominio.com', 'altrodominio.it'];
+
+    // --- 2. MESSAGGIO DI ERRORE ---
+    // Modifica il messaggio che l'utente vedrà se il dominio non è valido.
+
+    const errorMessage = 'Registration permitted only with company email address.';
+
+    // --- FINE CONFIGURAZIONE ---
+    // (Non modificare il codice sotto questa linea)
+
+    const registerForm = document.getElementById('create_customer');
+
+    // Cerca l'ID del campo email. Solitamente 'RegisterForm-email' o 'Email'
+    const emailInput = document.getElementById('RegisterForm-email') || document.getElementById('Email');
+
+    if (!registerForm || !emailInput) {
+      console.warn('Script Restrizione Dominio: Impossibile trovare il modulo di registrazione o il campo email.');
+      return;
+    }
+
+    // Funzione per mostrare l'errore
+    function showErrorMessage() {
+      // Rimuovi eventuali messaggi di errore precedenti
+      removeErrorMessage();
+
+      // Crea il nuovo elemento di errore
+      let errorElement = document.createElement('div');
+      errorElement.id = 'domain-error-message';
+      errorElement.innerText = errorMessage;
+      errorElement.style.color = '#ff0000'; // Colore rosso per l'errore
+      errorElement.style.marginTop = '10px';
+
+      // Inserisci l'errore dopo l'elemento genitore del campo email
+      // (funziona bene con la struttura di Shopify)
+      emailInput.parentElement.insertAdjacentElement('afterend', errorElement);
+    }
+
+    // Funzione per rimuovere l'errore
+    function removeErrorMessage() {
+      let oldError = document.getElementById('domain-error-message');
+      if (oldError) {
+        oldError.remove();
+      }
+    }
+
+    // Rimuovi il messaggio di errore non appena l'utente inizia a correggere l'email
+    emailInput.addEventListener('input', removeErrorMessage);
+
+    // Ascolta l'evento di invio (submit) del modulo
+    registerForm.addEventListener('submit', function (event) {
+      const emailValue = emailInput.value.trim().toLowerCase();
+      let emailDomain = '';
+
+      if (emailValue.includes('@')) {
+        emailDomain = emailValue.substring(emailValue.lastIndexOf('@') + 1);
+      }
+
+      // Controlla se il dominio NON è nella lista
+      if (!allowedDomains.includes(emailDomain)) {
+        // Se non è valido:
+        // 1. Blocca l'invio del modulo
+        event.preventDefault();
+
+        // 2. Mostra il messaggio di errore
+        showErrorMessage();
+      }
+      // Se è valido, lo script non fa nulla e il modulo viene inviato normalmente.
+    });
+  });
+</script>
