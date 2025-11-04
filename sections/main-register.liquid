@@ -168,44 +168,41 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     // --- 1. CONFIGURAZIONE ---
-    // Aggiungi qui i tuoi domini aziendali.
-    // Assicurati che siano tutti in minuscolo.
-    // Esempio: ['azienda.com', 'shop-interno.it']
+    const allowedDomains = ['tuodominio.com', 'altrodominio.it'];
+    const errorMessage = 'Registrazione consentita solo con email aziendale.';
 
-    const allowedDomains = ['tgesolar.com', 'tgeelectric.com', 'tgeroofing.com', 'tge-solutions.com'];
-
-    // --- 2. MESSAGGIO DI ERRORE ---
-    // Modifica il messaggio che l'utente vedrà se il dominio non è valido.
-
-    const errorMessage = 'Registration permitted only with company email address.';
+    // --- 2. ID DEGLI ELEMENTI ---
+    // Assicurati che questi ID siano corretti
+    const formId = 'create_customer';
+    const emailId = 'RegisterForm-email';
 
     // --- FINE CONFIGURAZIONE ---
-    // (Non modificare il codice sotto questa linea)
 
-    const registerForm = document.getElementById('create_customer');
-
-    // Cerca l'ID del campo email. Solitamente 'RegisterForm-email' o 'Email'
-    const emailInput = document.getElementById('RegisterForm-email') || document.getElementById('Email');
+    const registerForm = document.getElementById(formId);
+    // Gestiamo i due ID email più comuni
+    const emailInput = document.getElementById(emailId) || document.getElementById('Email');
 
     if (!registerForm || !emailInput) {
-      console.warn('Script Restrizione Dominio: Impossibile trovare il modulo di registrazione o il campo email.');
+      console.warn('Script Restrizione Dominio: Impossibile trovare il modulo o il campo email.');
+      return;
+    }
+
+    // TROVIAMO IL PULSANTE DI SUBMIT (non ci serve l'ID)
+    const submitButton = registerForm.querySelector('button[type="submit"]');
+
+    if (!submitButton) {
+      console.warn('Script Restrizione Dominio: Impossibile trovare il pulsante di submit.');
       return;
     }
 
     // Funzione per mostrare l'errore
     function showErrorMessage() {
-      // Rimuovi eventuali messaggi di errore precedenti
       removeErrorMessage();
-
-      // Crea il nuovo elemento di errore
       let errorElement = document.createElement('div');
       errorElement.id = 'domain-error-message';
       errorElement.innerText = errorMessage;
-      errorElement.style.color = '#ff0000'; // Colore rosso per l'errore
+      errorElement.style.color = '#ff0000';
       errorElement.style.marginTop = '10px';
-
-      // Inserisci l'errore dopo l'elemento genitore del campo email
-      // (funziona bene con la struttura di Shopify)
       emailInput.parentElement.insertAdjacentElement('afterend', errorElement);
     }
 
@@ -217,11 +214,12 @@
       }
     }
 
-    // Rimuovi il messaggio di errore non appena l'utente inizia a correggere l'email
     emailInput.addEventListener('input', removeErrorMessage);
 
-    // Ascolta l'evento di invio (submit) del modulo
-    registerForm.addEventListener('submit', function (event) {
+    // --- LOGICA MODIFICATA ---
+    // Ascoltiamo il "click" sul pulsante, non il "submit" del modulo
+
+    submitButton.addEventListener('click', function (event) {
       const emailValue = emailInput.value.trim().toLowerCase();
       let emailDomain = '';
 
@@ -232,13 +230,21 @@
       // Controlla se il dominio NON è nella lista
       if (!allowedDomains.includes(emailDomain)) {
         // Se non è valido:
-        // 1. Blocca l'invio del modulo
+        // 1. Blocca l'azione predefinita del click (che è inviare il modulo)
         event.preventDefault();
+        // 2. Ferma la propagazione dell'evento per evitare che altri script lo sentano
+        event.stopPropagation();
+        event.stopImmediatePropagation();
 
-        // 2. Mostra il messaggio di errore
+        // 3. Mostra il messaggio di errore
         showErrorMessage();
+
+        // 4. Misura extra per bloccare
+        return false;
       }
-      // Se è valido, lo script non fa nulla e il modulo viene inviato normalmente.
+
+      // Se è valido, rimuovi eventuali errori e lascia che il click proceda
+      removeErrorMessage();
     });
   });
 </script>
