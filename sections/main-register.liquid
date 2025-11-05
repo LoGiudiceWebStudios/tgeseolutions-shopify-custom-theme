@@ -165,86 +165,163 @@
 }
 {% endschema %}
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // --- 1. CONFIGURAZIONE ---
-    const allowedDomains = ['tuodominio.com', 'altrodominio.it'];
-    const errorMessage = 'Registrazione consentita solo con email aziendale.';
+<!--
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // --- 1. CONFIGURAZIONE ---
+      const allowedDomains = ['tuodominio.com', 'altrodominio.it'];
+      const errorMessage = 'Registrazione consentita solo con email aziendale.';
 
-    // --- 2. ID DEGLI ELEMENTI ---
-    // Assicurati che questi ID siano corretti
-    const formId = 'create_customer';
-    const emailId = 'RegisterForm-email';
+      // --- 2. ID DEGLI ELEMENTI ---
+      // Assicurati che questi ID siano corretti
+      const formId = 'create_customer';
+      const emailId = 'RegisterForm-email';
 
-    // --- FINE CONFIGURAZIONE ---
+      // --- FINE CONFIGURAZIONE ---
 
-    const registerForm = document.getElementById(formId);
-    // Gestiamo i due ID email più comuni
-    const emailInput = document.getElementById(emailId) || document.getElementById('Email');
+      const registerForm = document.getElementById(formId);
+      // Gestiamo i due ID email più comuni
+      const emailInput = document.getElementById(emailId) || document.getElementById('Email');
 
-    if (!registerForm || !emailInput) {
-      console.warn('Script Restrizione Dominio: Impossibile trovare il modulo o il campo email.');
-      return;
-    }
-
-    // TROVIAMO IL PULSANTE DI SUBMIT (non ci serve l'ID)
-    const submitButton = registerForm.querySelector('button[type="submit"]');
-
-    if (!submitButton) {
-      console.warn('Script Restrizione Dominio: Impossibile trovare il pulsante di submit.');
-      return;
-    }
-
-    // Funzione per mostrare l'errore
-    function showErrorMessage() {
-      removeErrorMessage();
-      let errorElement = document.createElement('div');
-      errorElement.id = 'domain-error-message';
-      errorElement.innerText = errorMessage;
-      errorElement.style.color = '#ff0000';
-      errorElement.style.marginTop = '10px';
-      emailInput.parentElement.insertAdjacentElement('afterend', errorElement);
-    }
-
-    // Funzione per rimuovere l'errore
-    function removeErrorMessage() {
-      let oldError = document.getElementById('domain-error-message');
-      if (oldError) {
-        oldError.remove();
-      }
-    }
-
-    emailInput.addEventListener('input', removeErrorMessage);
-
-    // --- LOGICA MODIFICATA ---
-    // Ascoltiamo il "click" sul pulsante, non il "submit" del modulo
-
-    submitButton.addEventListener('click', function (event) {
-      const emailValue = emailInput.value.trim().toLowerCase();
-      let emailDomain = '';
-
-      if (emailValue.includes('@')) {
-        emailDomain = emailValue.substring(emailValue.lastIndexOf('@') + 1);
+      if (!registerForm || !emailInput) {
+        console.warn('Script Restrizione Dominio: Impossibile trovare il modulo o il campo email.');
+        return;
       }
 
-      // Controlla se il dominio NON è nella lista
-      if (!allowedDomains.includes(emailDomain)) {
-        // Se non è valido:
-        // 1. Blocca l'azione predefinita del click (che è inviare il modulo)
-        event.preventDefault();
-        // 2. Ferma la propagazione dell'evento per evitare che altri script lo sentano
-        event.stopPropagation();
-        event.stopImmediatePropagation();
+      // TROVIAMO IL PULSANTE DI SUBMIT (non ci serve l'ID)
+      const submitButton = registerForm.querySelector('button[type="submit"]');
 
-        // 3. Mostra il messaggio di errore
-        showErrorMessage();
-
-        // 4. Misura extra per bloccare
-        return false;
+      if (!submitButton) {
+        console.warn('Script Restrizione Dominio: Impossibile trovare il pulsante di submit.');
+        return;
       }
 
-      // Se è valido, rimuovi eventuali errori e lascia che il click proceda
-      removeErrorMessage();
+      // Funzione per mostrare l'errore
+      function showErrorMessage() {
+        removeErrorMessage();
+        let errorElement = document.createElement('div');
+        errorElement.id = 'domain-error-message';
+        errorElement.innerText = errorMessage;
+        errorElement.style.color = '#ff0000';
+        errorElement.style.marginTop = '10px';
+        emailInput.parentElement.insertAdjacentElement('afterend', errorElement);
+      }
+
+      // Funzione per rimuovere l'errore
+      function removeErrorMessage() {
+        let oldError = document.getElementById('domain-error-message');
+        if (oldError) {
+          oldError.remove();
+        }
+      }
+
+      emailInput.addEventListener('input', removeErrorMessage);
+
+      // --- LOGICA MODIFICATA ---
+      // Ascoltiamo il "click" sul pulsante, non il "submit" del modulo
+
+      submitButton.addEventListener('click', function (event) {
+        const emailValue = emailInput.value.trim().toLowerCase();
+        let emailDomain = '';
+
+        if (emailValue.includes('@')) {
+          emailDomain = emailValue.substring(emailValue.lastIndexOf('@') + 1);
+        }
+
+        // Controlla se il dominio NON è nella lista
+        if (!allowedDomains.includes(emailDomain)) {
+          // Se non è valido:
+          // 1. Blocca l'azione predefinita del click (che è inviare il modulo)
+          event.preventDefault();
+          // 2. Ferma la propagazione dell'evento per evitare che altri script lo sentano
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+
+          // 3. Mostra il messaggio di errore
+          showErrorMessage();
+
+          // 4. Misura extra per bloccare
+          return false;
+        }
+
+        // Se è valido, rimuovi eventuali errori e lascia che il click proceda
+        removeErrorMessage();
+      });
     });
-  });
+  </script>
+-->
+<script>
+  (function () {
+    if (window.__tge_reg_domain_validator) return;
+    window.__tge_reg_domain_validator = true;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var allowedDomain = 'tgesolar.com';
+      var section = document.querySelector('.customer.register');
+      if (!section) return;
+
+      var form = section.querySelector('form');
+      var emailInput = section.querySelector('#RegisterForm-email');
+      if (!form || !emailInput) return;
+
+      // find submit button (themes sometimes omit type="submit")
+      var submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('button');
+
+      function removeError() {
+        var old = document.getElementById('tge-domain-error');
+        if (old) old.remove();
+        emailInput.removeAttribute('aria-describedby');
+        emailInput.removeAttribute('aria-invalid');
+      }
+
+      function showError(message) {
+        removeError();
+        var err = document.createElement('div');
+        err.id = 'tge-domain-error';
+        err.className = 'form__message';
+        err.setAttribute('role', 'alert');
+        err.style.color = '#c00';
+        err.style.marginTop = '8px';
+        err.textContent = message;
+
+        // insert after the email field
+        if (emailInput.parentNode) {
+          emailInput.parentNode.insertAdjacentElement('afterend', err);
+        } else {
+          form.insertAdjacentElement('beforeend', err);
+        }
+
+        emailInput.setAttribute('aria-invalid', 'true');
+        emailInput.setAttribute('aria-describedby', 'tge-domain-error');
+        emailInput.focus();
+      }
+
+      emailInput.addEventListener('input', removeError);
+
+      // Validate on submit (works for both button click and form submit)
+      form.addEventListener('submit', function (event) {
+        var value = (emailInput.value || '').trim().toLowerCase();
+        var domain = '';
+        var at = value.lastIndexOf('@');
+        if (at !== -1) domain = value.slice(at + 1);
+
+        if (domain !== allowedDomain) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          showError('Registrations are allowed only with "' + allowedDomain + '" email addresses.');
+          return false;
+        }
+
+        removeError();
+        return true;
+      });
+
+      // Extra: prevent double-submission while invalid
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function (ev) {
+          // allow click to trigger form submit -> handler above will validate
+        });
+      }
+    });
+  })();
 </script>
