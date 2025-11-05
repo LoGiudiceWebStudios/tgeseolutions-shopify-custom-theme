@@ -166,7 +166,7 @@ slideshow-component .slideshow.banner {
   .slideshow__controls {
     position: absolute !important;
     bottom: 1.2rem !important;
-    right: 1.2rem !important;
+    right: 0; /* ORIGINAL: 1.2rem !important; CHANGED TO ALIGN TO THE CENTER THE CONTROLS*/
     left: auto !important;
     top: auto !important;
     z-index: 10 !important;
