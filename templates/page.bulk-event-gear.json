@@ -30,7 +30,7 @@
         "text_XR3tgL": {
           "type": "text",
           "settings": {
-            "text": "Lorem ipsum dolor sit amet consectetur adipiscing elit, sem pellentesque bibendum penatibus vel imperdiet habitasse cum, dignissim conubia ",
+            "text": "Whether you’re managing team inventory or preparing for upcoming events, this section has you covered. Stock up on bulk materials for reps and grab professional event gear built to showcase the brand wherever you go.",
             "text_style": "body"
           }
         },
@@ -53,6 +53,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
+        "image": "shopify://shop_images/3.webp",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "image_behavior": "none",

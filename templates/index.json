@@ -15,15 +15,16 @@
         "slide_qAcxby": {
           "type": "slide",
           "settings": {
-            "image_overlay_opacity": 0,
-            "heading": "Image slide",
-            "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "",
+            "image": "shopify://shop_images/3.webp",
+            "image_overlay_opacity": 20,
+            "heading": "",
+            "heading_size": "h2",
+            "subheading": "",
+            "button_label": "SHOP NOW",
+            "link": "https://tgesolutions-dev.myshopify.com/collections/apparel",
             "button_style_secondary": false,
             "show_text_box": true,
-            "box_align": "middle-center",
+            "box_align": "bottom-center",
             "text_alignment": "center",
             "text_alignment_mobile": "center",
             "color_scheme": ""
@@ -32,15 +33,16 @@
         "slide_JmKXrC": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/2Q323_2.png",
             "image_overlay_opacity": 0,
-            "heading": "Image slide",
-            "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "",
+            "heading": "",
+            "heading_size": "h2",
+            "subheading": "",
+            "button_label": "SHOP NOW",
+            "link": "https://tgesolutions-dev.myshopify.com/collections/apparel",
             "button_style_secondary": false,
             "show_text_box": true,
-            "box_align": "middle-center",
+            "box_align": "bottom-center",
             "text_alignment": "center",
             "text_alignment_mobile": "center",
             "color_scheme": ""
@@ -69,14 +71,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Talk about your brand",
+            "heading": "",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+            "text": ""
           }
         }
       },
@@ -99,24 +101,24 @@
         "column_TNrXb8": {
           "type": "column",
           "settings": {
-            "bg_image": "shopify://shop_images/stock-photo-scenic-view-snowy-mountains-pine-trees-white-fluffy-clouds.webp",
-            "button_text": "Visit",
+            "bg_image": "shopify://shop_images/639a1ad2e7e701ec22441d1ab51aa083.jpg",
+            "button_text": "WORK",
             "button_link": "shopify://collections/apparel"
           }
         },
         "column_dVmMcB": {
           "type": "column",
           "settings": {
-            "bg_image": "shopify://shop_images/sm-mistysunrise_tamnelsonrudiak_700.jpg",
-            "button_text": "Visit",
+            "bg_image": "shopify://shop_images/c98b727c7eaa449af42b644ca7569565.jpg",
+            "button_text": "ELTIES CLUB",
             "button_link": "shopify://collections/apparel"
           }
         },
         "column_H8HdHL": {
           "type": "column",
           "settings": {
-            "bg_image": "shopify://shop_images/110003.jpg",
-            "button_text": "Visit",
+            "bg_image": "shopify://shop_images/01ac2211270873d1d3d6b17567afa328.jpg",
+            "button_text": "LIFESTYLE",
             "button_link": "shopify://collections/apparel"
           }
         }
@@ -135,22 +137,22 @@
         "heading_mifGPL": {
           "type": "heading",
           "settings": {
-            "heading": "Lorem Ipossum",
+            "heading": "The Team Behind the Grind",
             "heading_size": "h1"
           }
         },
         "text_DYFVNB": {
           "type": "text",
           "settings": {
-            "text": "Lorem ipsum dolor sit amet consectetur adipiscing elit fusce libero felis,",
+            "text": "Where hard work meets good times, built by reps for reps.",
             "text_style": "body"
           }
         },
         "buttons_DA8ByK": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
+            "button_label_1": "SHOP NOW",
+            "button_link_1": "shopify://collections/essentials",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -165,10 +167,10 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/110003.jpg",
-        "image_overlay_opacity": 0,
+        "image": "shopify://shop_images/5cc27cd42bde10a64e1313614f92716c.jpg",
+        "image_overlay_opacity": 20,
         "image_height": "adapt",
-        "image_behavior": "none",
+        "image_behavior": "zoom-in",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
         "show_text_box": true,
@@ -184,15 +186,23 @@
         "icon_hk3dMd": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/3d-model-of-a-orange-t-shirt-without-background.png",
+            "icon": "shopify://shop_images/7.jpg",
             "icon_title": "T-Shirts",
             "icon_link": "shopify://collections/apparel"
+          }
+        },
+        "icon_VKGDBR": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon_title": "",
+            "icon_link": ""
           }
         },
         "icon_Q39MmU": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/generate-an-image-of-a-black-hat-with-white-text-without-background.png",
+            "icon": "shopify://shop_images/2_8370d2f3-5bd3-4415-bfce-9c514edbcebd.jpg",
             "icon_title": "Hats",
             "icon_link": "shopify://collections/apparel"
           }
@@ -200,7 +210,7 @@
         "icon_MF9Ew7": {
           "type": "icon",
           "settings": {
-            "icon": "shopify://shop_images/an-image-of-a-belt-without-background.png",
+            "icon": "shopify://shop_images/48.jpg",
             "icon_title": "Accessories",
             "icon_link": "shopify://collections/accessories"
           }
@@ -208,13 +218,14 @@
       },
       "block_order": [
         "icon_hk3dMd",
+        "icon_VKGDBR",
         "icon_Q39MmU",
         "icon_MF9Ew7"
       ],
       "name": "Spotlight Icons Row",
       "settings": {
         "title": "SPOTLIGHT",
-        "desc": "Lorem ipsum dolor sit amet consectetur adipiscing elit dapibus nisi."
+        "desc": "Our most popular picks and essentials everything you need, all in one place."
       }
     }
   },

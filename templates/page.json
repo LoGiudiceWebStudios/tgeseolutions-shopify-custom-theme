@@ -23,14 +23,14 @@
         "heading_pmRD36": {
           "type": "heading",
           "settings": {
-            "heading": "LOREM IPOSSUM",
+            "heading": "<strong>Privacy Policy</strong>",
             "heading_size": "h1"
           }
         },
         "text_XR3tgL": {
           "type": "text",
           "settings": {
-            "text": "Lorem ipsum dolor sit amet consectetur adipiscing elit, sem pellentesque bibendum penatibus vel imperdiet habitasse cum, dignissim conubia ",
+            "text": "Learn how we collect, use, and protect your information. Your privacy matters, and we’re committed to keeping your data secure and transparent at every step.",
             "text_style": "body"
           }
         },
@@ -53,6 +53,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
+        "image": "shopify://shop_images/3.webp",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "image_behavior": "none",

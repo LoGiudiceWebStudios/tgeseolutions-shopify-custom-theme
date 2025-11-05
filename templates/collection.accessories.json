@@ -31,7 +31,7 @@
         "text_6mtAYy": {
           "type": "text",
           "settings": {
-            "text": "Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin sociis urna, arcu fermentum suspendisse morbi rhoncus feugiat consequat primis class. Accumsan",
+            "text": "Finish your look and stay equipped with practical add-ons built for style and function. From hats to scarves and gloves, these details make all the difference.",
             "text_style": "body"
           }
         },
@@ -54,6 +54,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
+        "image": "shopify://shop_images/3.webp",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "image_behavior": "none",
