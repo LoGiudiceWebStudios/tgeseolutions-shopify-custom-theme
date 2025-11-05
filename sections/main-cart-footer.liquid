@@ -126,7 +126,19 @@
               {%- endif -%}
           {%- endcase -%}
         {% endfor %}
-
+        <!-- Custom Input for employee ID -->
+        <div style="margin: 15px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <label for="employee-id" style="display: block; margin-bottom: 5px; font-weight: bold;">
+            Employee ID (Required for billing):
+          </label>
+          <input
+            type="text"
+            id="employee-id"
+            name="attributes[Employee ID]"
+            style="width: 100%; padding: 8px;"
+            required
+          >
+        </div>
         <div id="cart-errors"></div>
       </div>
     </div>
@@ -147,7 +159,7 @@
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
-    },    
+    },
     {
       "type": "range",
       "id": "padding_top",
