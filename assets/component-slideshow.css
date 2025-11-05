@@ -40,6 +40,7 @@ slideshow-component .slideshow.banner {
 }
 
 .slideshow__text.banner__box {
+  top: -20%; /* Original: None, Move up the button */
   display: flex;
   flex-direction: column;
   justify-content: center;
