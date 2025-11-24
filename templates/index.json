@@ -101,7 +101,7 @@
         "column_TNrXb8": {
           "type": "column",
           "settings": {
-            "bg_image": "shopify://shop_images/639a1ad2e7e701ec22441d1ab51aa083.jpg",
+            "bg_image": "shopify://shop_images/2.png",
             "button_text": "WORK",
             "button_link": "shopify://collections/apparel"
           }
@@ -117,7 +117,7 @@
         "column_H8HdHL": {
           "type": "column",
           "settings": {
-            "bg_image": "shopify://shop_images/01ac2211270873d1d3d6b17567afa328.jpg",
+            "bg_image": "shopify://shop_images/3.png",
             "button_text": "LIFESTYLE",
             "button_link": "shopify://collections/apparel"
           }
