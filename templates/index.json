@@ -129,7 +129,9 @@
         "column_H8HdHL"
       ],
       "name": "Three Column Background Section",
-      "settings": {}
+      "settings": {
+        "button_size": "large"
+      }
     },
     "image_banner_wq3ihH": {
       "type": "image-banner",
