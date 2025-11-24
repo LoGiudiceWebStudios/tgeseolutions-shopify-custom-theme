@@ -167,7 +167,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/5cc27cd42bde10a64e1313614f92716c.jpg",
+        "image": "shopify://shop_images/4.png",
         "image_overlay_opacity": 20,
         "image_height": "adapt",
         "image_behavior": "zoom-in",
