@@ -42,6 +42,22 @@
     border: none;
     display: inline-block;
   }
+  /* Button size presets */
+  .three-col-bg-section .col .col-btn--small {
+    font-size: 1rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 1.6rem;
+  }
+  .three-col-bg-section .col .col-btn--medium {
+    font-size: 1.3rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 2rem;
+  }
+  .three-col-bg-section .col .col-btn--large {
+    font-size: 1.6rem;
+    padding: 0.9rem 1.9rem;
+    border-radius: 2.4rem;
+  }
   .three-col-bg-section .col .col-btn:hover {
     background: #222;
     color: #fff;
@@ -64,17 +80,31 @@
       font-size: 1rem;
       padding: 0.5rem 1rem;
     }
+    /* Adjust presets for mobile to fit better */
+    .three-col-bg-section .col .col-btn--small {
+      font-size: 0.9rem;
+      padding: 0.35rem 0.75rem;
+    }
+    .three-col-bg-section .col .col-btn--medium {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+    }
+    .three-col-bg-section .col .col-btn--large {
+      font-size: 1.15rem;
+      padding: 0.65rem 1.2rem;
+    }
   }
 </style>
 
 <div class="three-col-bg-section">
+  {% assign btn_size = section.settings.button_size | default: 'medium' %}
   {% for block in section.blocks %}
     <div
       class="col"
       style="background-image: url('{{ block.settings.bg_image | image_url: width: 800 }}');"
     >
       {% if block.settings.button_text != blank and block.settings.button_link != blank %}
-        <a href="{{ block.settings.button_link }}" class="col-btn">
+        <a href="{{ block.settings.button_link }}" class="col-btn col-btn--{{ btn_size }}">
           {{ block.settings.button_text }}
         </a>
       {% endif %}
@@ -85,7 +115,19 @@
 {% schema %}
 {
   "name": "Three Column BG Section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "Button size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    }
+  ],
   "blocks": [
     {
       "type": "column",
