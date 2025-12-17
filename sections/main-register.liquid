@@ -258,7 +258,8 @@
     window.__tge_reg_domain_validator = true;
 
     document.addEventListener('DOMContentLoaded', function () {
-      var allowedDomain = 'tgesolar.com';
+      // List of allowed email domains for registration
+      var allowedDomains = ['tgesolar.com', 'tge-solutions.com', 'tgeroofing.com', 'tgeelectric.com'];
       var section = document.querySelector('.customer.register');
       if (!section) return;
 
@@ -307,10 +308,10 @@
         var at = value.lastIndexOf('@');
         if (at !== -1) domain = value.slice(at + 1);
 
-        if (domain !== allowedDomain) {
+        if (allowedDomains.indexOf(domain) === -1) {
           event.preventDefault();
           event.stopImmediatePropagation();
-          showError('Registrations are allowed only with "' + allowedDomain + '" email addresses.');
+          showError('Registration is only allowed with the following domains: ' + allowedDomains.join(', '));
           return false;
         }
 
